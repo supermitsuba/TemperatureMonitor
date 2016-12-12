@@ -1,7 +1,8 @@
 import * as mysql      from "mysql"
 
 export interface IDatabase {
-    executeQuery(statement: string, parameters: any[], 
+    executeQuery(statement: string, 
+        parameters: any[], 
         success: (data: mysql.IQuery) => void, 
         fail: (data: mysql.IError) => void)
 }
@@ -13,25 +14,28 @@ export class Database implements IDatabase {
         this.pool = mysql.createPool(config)
     }
 
-    public executeQuery(statement: string, parameters: any[], 
-        success: (data: mysql.IQuery) => void, 
+    executeQuery(statement: string, 
+        parameters: any[], 
+        success: (data: any) => void, 
         fail: (data: mysql.IError) => void) {
 
         this.pool.getConnection(function(error: mysql.IError, conn: mysql.IConnection){
-        if(error){
-            error.message += " Here is the entity: "+ JSON.stringify(parameters)
-            return fail(error)
-        }
-
-        conn.query(statement, parameters, function(err: mysql.IError, data: mysql.IQuery){
             if(error){
                 error.message += " Here is the entity: "+ JSON.stringify(parameters)
-                conn.release()
+                console.log(error.message)
                 return fail(error)
             }
 
-            return success(data);
+            conn.query(statement, parameters, function(err: mysql.IError, results: any){
+                if(err){
+                    err.message += " Here is the entity: "+ JSON.stringify(parameters)
+                    console.log(err.message)
+                    conn.release()
+                    return fail(err)
+                }
+                
+                return success(results)
+            })
         })
-    })
     }
 }

@@ -3,13 +3,13 @@ services:
     data:
         image: mysql
         environment:
-            - MYSQL_ROOT_PASSWORD: password
-            - MYSQL_DATABASE: iot
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: iot
             #- MYSQL_USER:
             #- MYSQL_PASSWORD:
             #- MYSQL_ALLOW_EMPTY_PASSWORD: no
             #- MYSQL_RANDOM_ROOT_PASSWORD: no
-            - MYSQL_ONETIME_PASSWORD: yes
+            #- MYSQL_ONETIME_PASSWORD: yes
         expose:
             - "3306"
         ports:
@@ -21,8 +21,8 @@ services:
 
         links: 
             - data
-volumes:
-    - logVolume01: /tmp/docker/log
+#volumes:
+    #logVolume01: /tmp/docker/log
     #- dataVolume01: /tmp/docker/log
 
 # once created, run this command

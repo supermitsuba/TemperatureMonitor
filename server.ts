@@ -27,9 +27,11 @@ class Server {
             console.log('Example app listening on port 3000!')
         })
 
+        this.app.use(bodyParser.json())
+        
         var mysqlConfig:mysql.IPoolConfig = {}
-        mysqlConfig.host     = "data"
-        mysqlConfig.database = "IOT"
+        mysqlConfig.host     = "localhost"
+        mysqlConfig.database = "iot"
         mysqlConfig.user     = "root"
         mysqlConfig.password = "password"
 

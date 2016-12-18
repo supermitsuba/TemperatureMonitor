@@ -7,6 +7,8 @@ import * as route      from "./routes/index"
 import * as mysql      from "mysql"
 import * as data       from "./services/database"
 
+const port = 3000;
+
 class Server {
     private database: data.IDatabase
     public app:       express.Application
@@ -23,14 +25,14 @@ class Server {
     }
 
     private config() {
-        this.app.listen(3000, function() {
+        this.app.listen(port, function() {
             console.log('Example app listening on port 3000!')
         })
 
         this.app.use(bodyParser.json())
         
         var mysqlConfig:mysql.IPoolConfig = {}
-        mysqlConfig.host     = "localhost"
+        mysqlConfig.host     = "data"
         mysqlConfig.database = "iot"
         mysqlConfig.user     = "root"
         mysqlConfig.password = "password"

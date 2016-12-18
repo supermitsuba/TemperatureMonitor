@@ -10,5 +10,5 @@ RUN npm install
 RUN npm install typescript
 RUN npm install -g typescript
 
-EXPOSE 8080
+EXPOSE 3000
 CMD [ "npm", "start" ]

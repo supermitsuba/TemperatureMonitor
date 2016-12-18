@@ -20,6 +20,7 @@ import * as data    from "../services/database"
             (data: any) => {
                 res.end('ok')
             }, (error: mysql.IError) => {
+                console.log(error)
                 res.end('error 1')
             })
       }

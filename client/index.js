@@ -9,10 +9,10 @@ var path     = process.env.temperatureExecutable || '../c/bin/temp';
 var deviceId = process.env.deviceId || 'raspberryPi';
 
 var child = spawn(path, []);
-console.log('Starting at ... ', moment().format())
+console.log('Starting at ... ', moment().format('YYYY-MM-DD hh:mm:ss'))
 
 child.stdout.on('data', function(chunk) {
-    console.log('Received event! ', moment().format())
+    console.log('Received event! ', moment().format('YYYY-MM-DD hh:mm:ss'))
     var lines = chunk.toString().split('\n')
 
     var sumTemp = 0, sumHumdity = 0, count = 0;
@@ -42,7 +42,7 @@ function postData(temp, humidity){
     var obj = {}
     obj.temp = temp
     obj.humidity = humidity
-    obj.dateOfOccurance = moment().format()
+    obj.dateOfOccurance = moment().format('YYYY-MM-DD hh:mm:ss')
     obj.deviceId = deviceId
     
     console.log('posting this: ', JSON.stringify(obj))

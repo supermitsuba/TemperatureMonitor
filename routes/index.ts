@@ -12,7 +12,7 @@ import * as data    from "../services/database"
       }
 
       public post = (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        var statement:string = 'INSERT INTO temperature (temp, humidity, dateOfOccurance, deviceId) VALUES (?,?,?);'
+        var statement:string = 'INSERT INTO temperature (temp, humidity, dateOfOccurance, deviceId) VALUES (?,?,?,?);'
         var parameters:any[] = [req.body.temp, req.body.humidity, req.body.dateOfOccurance, req.body.deviceId]
 
         console.dir(parameters)

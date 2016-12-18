@@ -1,6 +1,7 @@
 // tempUrl='http://192.168.10.106:8080/api/temperature' temperatureExecutable='../../temp' deviceId='babys room' node index.js
 var request = require('request');
 var moment = require('moment');
+var unirest = require('unirest');
 var spawn = require('child_process').spawn;
 
 var baseUrl  = process.env.tempUrl || 'http://192.168.10.106:8080/api/temperature';
@@ -45,14 +46,17 @@ function postData(temp, humidity){
     obj.deviceId = deviceId
     
     console.log('posting this: ', JSON.stringify(obj))
-    request.post({
-                url: baseUrl,
-                header: { 'content-type': 'application/json' },
-                body: JSON.stringify(obj)
-            })
-           .on('error', function(err) {
-                console.log(err)
-           })
+    unirest.post(baseUrl)
+        .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
+        .send({
+            "temp":"68.0",
+            "humidity": "32.1",
+            "dateOfOccurance":"2016-12-17 23:13:00",
+            "deviceId":"babys room"
+        })
+        .end(function (response) {
+            console.log("Response: ", response.body);
+        });
 }
 
 function jsonString(str) {

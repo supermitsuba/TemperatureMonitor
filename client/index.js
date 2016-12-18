@@ -17,7 +17,7 @@ child.stdout.on('data', function(chunk) {
     for(var i = 0; i < lines.length; i++) {
         var line = lines[i]
         var data = jsonString(line)
-        console.log(data)
+        console.log('Before: ', line, ' After: ',data)
         if(data){
             sumTemp += data.Temp;
             sumHumdity += data.Humidity;

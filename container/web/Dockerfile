@@ -7,6 +7,7 @@ RUN apt-get install git
 RUN git clone https://github.com/supermitsuba/TemperatureMonitor
 WORKDIR /usr/src/app/TemperatureMonitor
 RUN npm install
+RUN npm install -g typescript
 
 EXPOSE 8080
 CMD [ "npm", "start" ]

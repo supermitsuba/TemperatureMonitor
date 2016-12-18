@@ -12,8 +12,8 @@ import * as data    from "../services/database"
       }
 
       public post = (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        var statement:string = 'INSERT INTO temperature (value, dateOfOccurance, deviceId) VALUES (?,?,?);'
-        var parameters:any[] = [req.body.value, req.body.dateOfOccurance, req.body.deviceId]
+        var statement:string = 'INSERT INTO temperature (temp, humidity, dateOfOccurance, deviceId) VALUES (?,?,?);'
+        var parameters:any[] = [req.body.temp, req.body.humidity, req.body.dateOfOccurance, req.body.deviceId]
 
         console.dir(parameters)
         this.db.executeQuery(statement, parameters, 
@@ -26,7 +26,7 @@ import * as data    from "../services/database"
       }
 
       public getAll = (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        var statement:string = 'Select id, value, dateOfOccurance, deviceId, createdDate from temperature;'
+        var statement:string = 'Select * from temperature;'
         var parameters:any[] = []
 
         this.db.executeQuery(statement, parameters, 

@@ -12,13 +12,23 @@ console.log('Starting at ... ', moment().format())
 child.stdout.on('data', function(chunk) {
     console.log('Received event! ', moment().format())
     var lines = chunk.toString().split('\n')
+
+    var sumTemp = 0, sumHumdity = 0, count = 0;
     for(var i = 0; i < lines.length; i++) {
         var line = lines[i]
         var data = jsonString(line)
-        if(data) {
-            postData(data)
+        console.log(data)
+        if(data){
+            sumTemp += data.Temp;
+            sumHumdity += data.Humidity;
+            count++;
         }
-    }    
+    }   
+    
+    postData({ 
+        Temp: sumTemp/count,
+        Humidity: sumHumdity/count
+    })
 });
 
 function postData(data){

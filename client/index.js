@@ -45,8 +45,11 @@ function postData(temp, humidity){
     obj.deviceId = deviceId
     
     console.log('posting this: ', JSON.stringify(obj))
-    request.post(baseUrl)
-           .form(obj)
+    request.post({
+                url: baseUrl,
+                header: { 'content-type': 'application/json' },
+                body: JSON.stringify(obj)
+            })
            .on('error', function(err) {
                 console.log(err)
            })

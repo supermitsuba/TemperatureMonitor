@@ -8,9 +8,9 @@ var path     = process.env.temperatureExecutable || '../c/bin/temp';
 var deviceId = process.env.deviceId || 'raspberryPi';
 
 var child = spawn(path, []);
-
+console.log('Starting at ... ', moment().format())
 child.stdout.on('data', function(chunk) {
-    console.log('Received event! ', moment.format())
+    console.log('Received event! ', moment().format())
     var lines = chunk.toString().split('\n')
     for(var i = 0; i < lines.length; i++) {
         var line = lines[i]

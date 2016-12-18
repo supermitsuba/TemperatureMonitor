@@ -48,12 +48,7 @@ function postData(temp, humidity){
     console.log('posting this: ', JSON.stringify(obj))
     unirest.post(baseUrl)
         .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
-        .send({
-            "temp":"68.0",
-            "humidity": "32.1",
-            "dateOfOccurance":"2016-12-17 23:13:00",
-            "deviceId":"babys room"
-        })
+        .send(obj)
         .end(function (response) {
             console.log("Response: ", response.body);
         });

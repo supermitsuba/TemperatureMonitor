@@ -1,3 +1,4 @@
+// tempUrl="http://192.168.10.106:8080/api/temperature" temperatureExecutable="../../temp" deviceId="babys room" node index.js
 var request = require('request');
 var moment = require('moment');
 var spawn = require('child_process').spawn;
@@ -9,6 +10,7 @@ var deviceId = process.env.deviceId || 'raspberryPi';
 var child = spawn(path, []);
 
 child.stdout.on('data', function(chunk) {
+    console.log('Received event! ', moment.format())
     var lines = chunk.toString().split('\n')
     for(var i = 0; i < lines.length; i++) {
         var line = lines[i]

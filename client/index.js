@@ -36,7 +36,7 @@ function postData(data){
            .form({
                temp: data.Temp,
                humidity: data.Humidity,
-               dateOfOccurance: moment.format(),
+               dateOfOccurance: moment().format(),
                deviceId: deviceId
             })
            .on('error', function(err) {

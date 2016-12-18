@@ -72,7 +72,7 @@ void read_dht11_dat()
 		f = dht11_dat[2] * 9. / 5. + 32;
 
         char* x = (char*)malloc(40 * sizeof(char));;
-        sprintf(x, "{ 'Humidity': %d.%d, 'Temp': %.1f }\n",  dht11_dat[0], dht11_dat[1], f);
+        sprintf(x, "{ \"Humidity\": %d.%d, \"Temp\": %.1f }\n",  dht11_dat[0], dht11_dat[1], f);
         printf( x );
 
 	} else  {

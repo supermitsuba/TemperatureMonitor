@@ -1,4 +1,4 @@
-// tempUrl="http://192.168.10.106:8080/api/temperature" temperatureExecutable="../../temp" deviceId="babys room" node index.js
+// tempUrl='http://192.168.10.106:8080/api/temperature' temperatureExecutable='../../temp' deviceId='babys room' node index.js
 var request = require('request');
 var moment = require('moment');
 var spawn = require('child_process').spawn;
@@ -9,6 +9,7 @@ var deviceId = process.env.deviceId || 'raspberryPi';
 
 var child = spawn(path, []);
 console.log('Starting at ... ', moment().format())
+
 child.stdout.on('data', function(chunk) {
     console.log('Received event! ', moment().format())
     var lines = chunk.toString().split('\n')
@@ -25,32 +26,29 @@ child.stdout.on('data', function(chunk) {
         }
     }   
     
-    postData({ 
-        Temp: sumTemp/count,
-        Humidity: sumHumdity/count
-    })
-});
-
-function postData(data){
-    request.post(baseUrl)
-           .form({
-               temp: data.Temp,
-               humidity: data.Humidity,
-               dateOfOccurance: moment().format(),
-               deviceId: deviceId
-            })
-           .on('error', function(err) {
-                console.log(err)
-           })
-}
-
-child.stderr.on('data', function (data) {
-    console.log('stderr: ' + data);
+    postData(sumTemp/count, sumHumdity/count);
 });
 
 child.on('close', function(code) {
     console.log('Exited with code: ${code}')
 });
+
+child.stderr.on('data', function (data) {
+    console.log('stderr: ' + data);
+});
+
+function postData(temp, humidity){
+    request.post(baseUrl)
+           .form({
+               'temp': temp,
+               'humidity': humidity,
+               'dateOfOccurance': moment().format(),
+               'deviceId': deviceId
+            })
+           .on('error', function(err) {
+                console.log(err)
+           })
+}
 
 function jsonString(str) {
     try {

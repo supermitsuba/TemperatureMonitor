@@ -18,7 +18,7 @@ child.stdout.on('data', function(chunk) {
     for(var i = 0; i < lines.length; i++) {
         var line = lines[i]
         var data = jsonString(line)
-        console.log('Before: ', line, ' After: ',data)
+
         if(data){
             sumTemp += data.Temp;
             sumHumdity += data.Humidity;
@@ -38,13 +38,15 @@ child.stderr.on('data', function (data) {
 });
 
 function postData(temp, humidity){
+    var obj = {}
+    obj.temp = temp
+    obj.humidity = humidity
+    obj.dateOfOccurance = moment().format()
+    obj.deviceId = deviceId
+    
+    console.log('posting this: ', JSON.stringify(obj))
     request.post(baseUrl)
-           .form({
-               'temp': temp,
-               'humidity': humidity,
-               'dateOfOccurance': moment().format(),
-               'deviceId': deviceId
-            })
+           .form(obj)
            .on('error', function(err) {
                 console.log(err)
            })

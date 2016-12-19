@@ -27,7 +27,7 @@ child.stdout.on('data', function(chunk) {
         }
     }   
     
-    postData(sumTemp/count, sumHumdity/count);
+    postData(sumTemp/count, sumHumdity/count, 0, 0);
 });
 
 child.on('close', function(code) {
@@ -38,7 +38,7 @@ child.stderr.on('data', function (data) {
     console.log('stderr: ' + data);
 });
 
-function postData(temp, humidity){
+function postData(temp, humidity, count, timeout){
     var obj = {}
     obj.temp = temp
     obj.humidity = humidity
@@ -50,7 +50,16 @@ function postData(temp, humidity){
         .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
         .send(obj)
         .end(function (response) {
-            console.log("Response: ", response.body);
+            if(response){
+                console.log("Response: ", response.body);
+            }
+            else{
+                if(count < 5){
+                    setTimeout(function(){
+                        postData(temp, humidity, count++, count * 1000)
+                    }, timeout)
+                }
+            }
         });
 }
 

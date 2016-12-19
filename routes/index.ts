@@ -18,10 +18,14 @@ import * as data    from "../services/database"
         console.dir(parameters)
         this.db.executeQuery(statement, parameters, 
             (data: any) => {
-                res.end('ok')
+                res.set("Connection", "close")
+                res.send('ok')
+                res.end()
             }, (error: mysql.IError) => {
                 console.log(error)
-                res.end('error 1')
+                res.set("Connection", "close")
+                res.send('error 1')
+                res.end();
             })
       }
 
@@ -33,7 +37,9 @@ import * as data    from "../services/database"
             (data: any) => {
                 res.end(JSON.stringify(data))
             }, (error: mysql.IError) => {
-                res.end('error 2')
+                res.set("Connection", "close")
+                res.send('error 2')
+                res.end()
                 console.dir(error)
             })
       }

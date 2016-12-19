@@ -11,7 +11,7 @@ export class Views {
     public get = (req: express.Request, res: express.Response, next: express.NextFunction ) => {
         console.log('Showing web page')
         console.log(path.join(__dirname, 'views', 'index.html'))
-        res.sendFile(path.join(__dirname, 'views', 'index.html'))
+        res.sendFile('index.html', { root: path.join(__dirname, 'views') })
         res.end()
     }
 }

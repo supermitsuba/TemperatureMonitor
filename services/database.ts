@@ -27,10 +27,10 @@ export class Database implements IDatabase {
             }
 
             conn.query(statement, parameters, function(err: mysql.IError, results: any){
+                conn.release()
                 if(err){
                     err.message += " Here is the entity: "+ JSON.stringify(parameters)
                     console.log(err.message)
-                    conn.release()
                     return fail(err)
                 }
                 

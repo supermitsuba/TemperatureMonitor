@@ -24,7 +24,7 @@
 
         function temperature(data) {
             var ctx = document.getElementById("myChart").getContext("2d");
-            var data = { labels: [], datasets: [{ 
+            var obj = { labels: [], datasets: [{ 
                 label: 'temperature',
                 fillColor: "rgba(220,220,220,0.2)",
                 strokeColor: "rgba(220,220,220,1)",
@@ -46,12 +46,12 @@
 
             for(var i = 0; i < data.length; i++) {
                 var record = data[i];
-                data.labels.push(record.createDate)
-                data.datasets[0].data.push(record.temp)
-                data.datasets[0].data.push(record.humidity)
+                obj.labels.push(record.createDate)
+                obj.datasets[0].data.push(record.temp)
+                obj.datasets[0].data.push(record.humidity)
             }
 
-            var myLineChart = new Chart(ctx).Line(data, {});
+            var myLineChart = new Chart(ctx).Line(obj, {});
         }
     }
 

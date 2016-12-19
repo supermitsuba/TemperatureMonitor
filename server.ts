@@ -4,6 +4,7 @@ import * as bodyParser from "body-parser"
 import * as express    from "express"
 import * as path       from "path"
 import * as route      from "./routes/index"
+import * as view      from "./routes/view"
 import * as mysql      from "mysql"
 import * as data       from "./services/database"
 
@@ -47,8 +48,10 @@ class Server {
 
         //create routes
         var index: route.Temperature = new route.Temperature(this.database)
+        var views: view.Views = new view.Views()
 
         //home page
+        router.get("/temperature", views.get.bind(views.get))
         router.get("/api/temperature", index.getAll.bind(index.getAll))
         router.post("/api/temperature", index.post.bind(index.post))
 

@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Temperature</title>
+  <meta name="description" content="Me">
+  <meta name="author" content="Me">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body onload="myFunction()">
+  <h1>Here is how warm the room is</h1>
+  <label>times are off by 5 hours</label>
+  
+  <canvas id="myChart" width="800" height="600"></canvas>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js" integrity="sha256-c7xMHIas8tWM77oqZNaHmN2z7Jz91uNC+w8CYBdDtqg=" crossorigin="anonymous"></script>
+  <script>
+    function myFunction(){
+        $.getJSON('api/temperature', temperature);
+
+        function temperature(data) {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var data = { labels: [], datasets: [{ 
+                label: 'temperature',
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: []
+            },{ 
+                label: 'humidity',
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: []
+            }]}
+
+            for(var i = 0; i < data.length; i++) {
+                var record = data[i];
+                data.labels.push(record.createDate)
+                data.datasets[0].data.push(record.temp)
+                data.datasets[0].data.push(record.humidity)
+            }
+
+            var myLineChart = new Chart(ctx).Line(data, {});
+        }
+    }
+
+  </script>
+</body>
+</html>

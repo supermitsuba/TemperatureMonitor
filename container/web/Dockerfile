@@ -9,6 +9,7 @@ WORKDIR /usr/src/app/TemperatureMonitor
 RUN npm install
 RUN npm install typescript
 RUN npm install -g typescript
+RUN tsc -p .
 
 EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD [ "node", "server" ]

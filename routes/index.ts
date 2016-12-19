@@ -30,7 +30,7 @@ import * as data    from "../services/database"
       }
 
       public getAll = (req: express.Request, res: express.Response, next: express.NextFunction) => {
-        var statement:string = 'select * from temperature order by dateOfOccurance desc limit 10;'
+        var statement:string = 'select * from temperature order by createdDate desc limit 10;'
         var parameters:any[] = []
 
         this.db.executeQuery(statement, parameters, 

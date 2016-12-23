@@ -1,6 +1,6 @@
 # TemperatureMonitor
 
-The purpose of this project was to monitor temperatures in the rooms of my house.  It uses a Raspberry PI, temperature sensor and a computer with MySQL and a webservice on it.
+The purpose of this project was to monitor temperatures in the rooms of my house.  It uses a Raspberry PI, temperature sensor and a computer with MySQL and a webservice on it.  Here is a description of what I did for the Temperature Monitor: [http://jordenlowe.com/2016-12-22-iot-temperature-monitor](http://jordenlowe.com/2016-12-22-iot-temperature-monitor)
 
 For the server
 ==============

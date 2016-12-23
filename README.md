@@ -7,11 +7,11 @@ For the server
 
 1. docker pull mysql
 2. Run the mysql container: 
-  *. docker run --name mysql -e MYSQL_ROOT_PASSWORD=password -d -p 3306:3306 mysql
+  * docker run --name mysql -e MYSQL_ROOT_PASSWORD=password -d -p 3306:3306 mysql
 3. under containers/web folder there is a Dockerfile.
 4. build the docker file by using: 
-  *. docker build --no-cache -t web .
-  *. docker run --link data -p 8080:3000 -d --name=web web
+  * docker build --no-cache -t web .
+  * docker run --link data -p 8080:3000 -d --name=web web
 
 For the client (raspberry pi/sensor)
 ====================================

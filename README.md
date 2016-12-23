@@ -17,15 +17,15 @@ For the client (raspberry pi/sensor)
 ====================================
 
 1. Download Wiring pi: 
-  *. https://github.com/WiringPi/WiringPi
+  * https://github.com/WiringPi/WiringPi
 2. Follow the instructions for installing wiring pi under the INSTALL file
 3. Build the c executable under client folder using this command:
-  *. cc -o bin/temp temp.c -L/usr/local/lib -lwiringPi
+  * cc -o bin/temp temp.c -L/usr/local/lib -lwiringPi
 4. Run the node.js index.js file under client folder:
-  *. tempUrl="http://192.168.10.106:8080/api/temperature" temperatureExecutable="./temp" deviceId="babys room" node index.js
-  *. tempUrl is temperature Url of the server above.
-  *. temperatureExecutable is the location of the executable that polls the temerature sensor
-  *. deviceId is for distinguishing between devices that are reporting the temperature data.  example, room1 and room2
+  * tempUrl="http://192.168.10.106:8080/api/temperature" temperatureExecutable="./temp" deviceId="babys room" node index.js
+  * tempUrl is temperature Url of the server above.
+  * temperatureExecutable is the location of the executable that polls the temerature sensor
+  * deviceId is for distinguishing between devices that are reporting the temperature data.  example, room1 and room2
   
 To view the temperatures:  http://<server_address>:8080/temperature
 

@@ -1,0 +1,56 @@
+{
+	"id": "4e9f07fd-7cbb-72af-6511-99dc2b90c454",
+	"name": "temp",
+	"description": "",
+	"order": [
+		"15f830f0-d685-48d9-a3db-35f3c9332270",
+		"48822ef7-f199-6182-97af-fa3e6f0c4610"
+	],
+	"folders": [],
+	"timestamp": 1482080038052,
+	"owner": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "15f830f0-d685-48d9-a3db-35f3c9332270",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://192.168.10.106:8080/api/temperature",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "4e9f07fd-7cbb-72af-6511-99dc2b90c454",
+			"data": [],
+			"dataMode": "raw",
+			"name": "post emperature",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1482080038052,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"value\":\"1\",\n\t\"dateOfOccurance\":\"2016-18-12 23:00:00\",\n\t\"deviceId\":\"test\"\n}"
+		},
+		{
+			"id": "48822ef7-f199-6182-97af-fa3e6f0c4610",
+			"headers": "",
+			"url": "http://192.168.10.106:8080/api/temperature",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "4e9f07fd-7cbb-72af-6511-99dc2b90c454",
+			"data": null,
+			"dataMode": "params",
+			"name": "get temperature",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1482080062078,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

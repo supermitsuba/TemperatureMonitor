@@ -27,7 +27,7 @@ For the client (raspberry pi/sensor)
   * temperatureExecutable is the location of the executable that polls the temerature sensor
   * deviceId is for distinguishing between devices that are reporting the temperature data.  example, room1 and room2
   
-To view the temperatures:  http://<server_address>:8080/temperature
+To view the temperatures:  http://{server_address}:8080/temperature
 
 2 API calls:
 

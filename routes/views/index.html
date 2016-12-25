@@ -13,7 +13,7 @@
     <div class="jumbotron">    
         <div class="container">
             <div class="page-header text-center">
-                <h1>How warm is the room</h1>
+                <h1 id="header">How warm is the room</h1>
             </div>
             <div class="row">
                 <div class="text-center">
@@ -55,12 +55,24 @@
 
             for(var i = data.length-1; i > -1; i--) {
                 var record = data[i];
-                obj.labels.push(moment(record.createdDate).fromNow())
+                var calendarTitle = moment(record.createdDate).calendar(null, {
+                    sameDay: '[Today at] HH:mm a',
+                    nextDay: '[Tomorrow at] HH:mm a',
+                    nextWeek: 'dddd [at] HH:mm a',
+                    lastDay: '[Yesterday at] HH:mm a',
+                    lastWeek: '[Last] dddd [at] HH:mm a',
+                    sameElse: 'DD/MM/YYYY [at] HH:mm a'
+                });
+                obj.labels.push(calendarTitle)
                 obj.datasets[0].data.push(record.temp)
                 obj.datasets[1].data.push(record.humidity)
             }
 
             var myLineChart = new Chart(ctx).Line(obj, {});
+
+            var headerCtx = document.getElementById("header")
+            headerCtx.innerText = "How warm is the room at " + moment().formt('llll')
+
         }
     }
 

@@ -21,7 +21,7 @@
                         <h1 id="header" class="panel-title">How warm is the room</h1>
                     </div>
                     <div class="panel-body text-center">
-                        <div>
+                        <div class="col-md-4">
                             The Legend
                             <div  id="legendDiv" />
                         </div>
@@ -78,7 +78,7 @@
             }
 
             var options = {
-                legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"> list-group" +
+                legendTemplate : "<ul class=\"list-group <%=name.toLowerCase()%>-legend\">" +
                                  "<% for (var i=0; i<datasets.length; i++){%>" +
                                  "<li class=\"list-group-item\" style=\"background-color:<%=datasets[i].strokeColor%>\">" +
                                     "<%if(datasets[i].label){%> <%=datasets[i].label%> <%}%>" +

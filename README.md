@@ -26,6 +26,7 @@ For the client (raspberry pi/sensor)
   * tempUrl is temperature Url of the server above.
   * temperatureExecutable is the location of the executable that polls the temerature sensor
   * deviceId is for distinguishing between devices that are reporting the temperature data.  example, room1 and room2
+5. The sensor I am using is a DHT11 found here: [https://www.adafruit.com/products/386](https://www.adafruit.com/products/386)
   
 To view the temperatures:  http://{server_address}:8080/temperature
 

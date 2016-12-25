@@ -22,6 +22,7 @@
                     </div>
                     <div class="panel-body text-center">
                         <canvas id="myChart" width="600" height="400"></canvas>
+                        <div id="legendDiv"></div>
                     </div>
                 </div>
             </div>
@@ -73,7 +74,7 @@
                 obj.datasets[1].data.push(record.humidity)
             }
 
-            var myLineChart = new Chart(ctx).Line(obj, {
+            var options = {
                 legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\">" +
                                  "<% for (var i=0; i<datasets.length; i++){%>" +
                                  "<li>" +
@@ -85,8 +86,11 @@
                                  "</li>" +
                                  "<%}%>" +
                                  "</ul>"
-            });
-
+            };
+            var myLineChart = new Chart(ctx).Line(obj, options);
+            var legend = myLineChart.generateLegend();
+            document.getElementById("legendDiv").innerHTML = legend;
+            
             var headerCtx = document.getElementById("header")
             headerCtx.innerText = "How warm is the room at " + moment().format('llll')
 

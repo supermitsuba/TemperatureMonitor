@@ -10,14 +10,19 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body onload="myFunction()">
-    <div class="jumbotron">    
+    <div class="">    
         <div class="container">
-            <div class="page-header text-center">
-                <h1 id="header">How warm is the room</h1>
-            </div>
+            <div class="page-header">
+                Home Temperature
+            </div>            
             <div class="row">
-                <div class="text-center">
-                    <canvas id="myChart" width="600" height="400"></canvas>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <h1 id="header" class="panel-title">How warm is the room</h1>
+                    </div>
+                    <div class="panel-body text-center">
+                        <canvas id="myChart" width="600" height="400"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,7 +76,7 @@
             var myLineChart = new Chart(ctx).Line(obj, {});
 
             var headerCtx = document.getElementById("header")
-            headerCtx.innerText = "How warm is the room at " + moment().formt('llll')
+            headerCtx.innerText = "How warm is the room at " + moment().format('llll')
 
         }
     }

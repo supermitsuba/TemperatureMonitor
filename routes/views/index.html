@@ -73,7 +73,9 @@
                 obj.datasets[1].data.push(record.humidity)
             }
 
-            var myLineChart = new Chart(ctx).Line(obj, {});
+            var myLineChart = new Chart(ctx).Line(obj, {
+                legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
+            });
 
             var headerCtx = document.getElementById("header")
             headerCtx.innerText = "How warm is the room at " + moment().format('llll')

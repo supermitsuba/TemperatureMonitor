@@ -21,8 +21,8 @@
                         <h1 id="header" class="panel-title">How warm is the room</h1>
                     </div>
                     <div class="panel-body text-center">
-                        <canvas id="myChart" width="600" height="400"></canvas>
                         <div id="legendDiv"></div>
+                        <canvas id="myChart" width="600" height="400"></canvas>
                     </div>
                 </div>
             </div>
@@ -79,10 +79,9 @@
                                  "<% for (var i=0; i<datasets.length; i++){%>" +
                                  "<li>" +
                                  "<span style=\"background-color:<%=datasets[i].strokeColor%>\">" +
-                                 "<%if(i===0){%> temperature: <%}%>" +
-                                 "<%if(i===1){%> humidity: <%}%>" +
-                                 "<%if(datasets[i].label){%> <%=datasets[i].label%> <%}%>" +
+                                 " " +
                                  "</span>" +
+                                 "<%if(datasets[i].label){%> <%=datasets[i].label%> <%}%>" +
                                  "</li>" +
                                  "<%}%>" +
                                  "</ul>"

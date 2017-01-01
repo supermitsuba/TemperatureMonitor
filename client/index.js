@@ -51,7 +51,7 @@ function postData(temp, humidity, count, timeout){
         .send(obj)
         .end(function (response) {
             console.log('Response: %s', JSON.stringify(response))
-            if(response.body){
+            if(response && response.statusCode === 200){
                 console.log("Response: ok");
             }
             else{

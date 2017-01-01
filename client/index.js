@@ -50,8 +50,9 @@ function postData(temp, humidity, count, timeout){
         .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
         .send(obj)
         .end(function (response) {
-            if(response){
-                console.log("Response: ", response.body);
+            console.log('Response: %s', JSON.stringify(response))
+            if(response.body){
+                console.log("Response: ok");
             }
             else{
                 if(count < 5){

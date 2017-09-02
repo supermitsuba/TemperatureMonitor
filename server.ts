@@ -33,7 +33,7 @@ class Server {
         this.app.use(bodyParser.json())
         
         var mysqlConfig:mysql.IPoolConfig = {}
-        mysqlConfig.host     = "data"
+        mysqlConfig.host     = "localhost"
         mysqlConfig.database = "iot"
         mysqlConfig.user     = "root"
         mysqlConfig.password = "password"

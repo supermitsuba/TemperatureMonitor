@@ -87,10 +87,14 @@ int main( void )
 	if ( wiringPiSetup() == -1 )
 		exit( 1 );
 
-	for ( int i = 0; i < 10; i++ )
+	int index = 0;
+	while ( 1 )
 	{
+		i++;
 		read_dht11_dat();
 		delay( 1000 ); /* wait 1sec to refresh */
+		
+		if(index == 10) break;
 	}
 
 	return(0);

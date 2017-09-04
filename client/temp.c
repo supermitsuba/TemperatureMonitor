@@ -90,7 +90,7 @@ int main( void )
 	int index = 0;
 	while ( 1 )
 	{
-		i++;
+		index++;
 		read_dht11_dat();
 		delay( 1000 ); /* wait 1sec to refresh */
 		

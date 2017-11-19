@@ -1,15 +1,19 @@
 version: '2'
-services:
+services: 
     temperature_data:
-        image: hypriot/rpi-mysql:5.5
+        image: supermitsuba/rpi-mysql:1
         environment:
             MYSQL_ROOT_PASSWORD: password
             MYSQL_DATABASE: iot
         ports:
             - "3306:3306"
     temperature_web:
-        build: ./web/.
+        build: supermitsuba/temperature-web:1
         ports:
             - "3000:3000"
-        links:
+        links: 
             - temperature_data
+
+# once created, run this command
+# docker-compose up -d --no-recreate .
+# docker-compose up -d --force-recreate web 

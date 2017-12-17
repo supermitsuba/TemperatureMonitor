@@ -45,7 +45,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js" integrity="sha256-c7xMHIas8tWM77oqZNaHmN2z7Jz91uNC+w8CYBdDtqg=" crossorigin="anonymous"></script>
   <script>
     function myFunction(){
-        $.getJSON('api/temperature', temperature);
+        var url = getBaseUrl()[0];
+        $.getJSON(url+'api/temperature', temperature);
 
         function temperature(data) {
             var ctx = document.getElementById("myChart").getContext("2d");
@@ -100,6 +101,11 @@
             var headerCtx = document.getElementById("header")
             headerCtx.innerText = "How warm is the room at " + moment().format('llll')
 
+        }
+
+        function getBaseUrl() {
+            var re = new RegExp(/^.*\//);
+            return re.exec(window.location.href);
         }
     }
 
